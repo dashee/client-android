@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:clipChildren="false">
+    
+    <LinearLayout
+        android:id="@+id/canvas"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="1.24"
+        android:orientation="vertical" 
+        />
+    
+    <FrameLayout
+        android:id="@+id/fragment_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+    	/>
+     
+     <fragment
+        android:id="@+id/fragment_log"
+        android:name="com.confusedbrowser.androneee_remote.fragments.FragmentLog"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" 
+     	/>
+     
+    <fragment
+         android:id="@+id/fragment_hud"
+         android:name="com.confusedbrowser.androneee_remote.fragments.FragmentHud"
+         android:layout_width="fill_parent"
+         android:layout_height="fill_parent" 
+         />
+
+</LinearLayout>

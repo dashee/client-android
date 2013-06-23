@@ -1,0 +1,174 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+
+    <LinearLayout
+        android:id="@+id/hud_canvas"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:layout_weight="1.24"
+        android:orientation="vertical" 
+        />
+    
+    <LinearLayout
+        android:id="@+id/hud_text_right_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:layout_gravity="right|bottom"
+        android:orientation="vertical"
+        >
+        
+        <LinearLayout
+            android:id="@+id/hud_text_roll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            >
+            
+            <TextView
+                android:id="@+id/hud_text_roll_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="0dp"
+                android:textColor="#000000"
+                android:textSize="11sp"
+                android:typeface="monospace" />
+            <TextView
+                android:id="@+id/hud_text_roll_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:paddingLeft="10dp"
+                android:text="@string/hud_text_roll_label"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="11sp"
+                android:typeface="monospace" />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:id="@+id/hud_text_pitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+            
+            <TextView
+                android:id="@+id/hud_text_pitch_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="0dp"
+                android:textColor="#000000"
+                android:textSize="11sp"
+                android:typeface="monospace" />
+            <TextView
+                android:id="@+id/hud_text_pitch_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:text="@string/hud_text_pitch_label"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="11sp"
+                android:typeface="monospace" />
+        </LinearLayout>
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/hud_text_left_bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:layout_gravity="left|bottom"
+        android:orientation="vertical"
+        >
+        
+        <LinearLayout
+            android:id="@+id/hud_text_ip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            >
+
+            <TextView
+                android:id="@+id/hud_text_ip_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:text="@string/hud_text_ip_label"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="11sp"
+                android:typeface="monospace" />
+            <TextView
+                android:id="@+id/hud_text_ip_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="0dp"
+                android:textColor="#000000"
+                android:textSize="11sp"
+                android:typeface="monospace" />
+
+        </LinearLayout>
+        
+        <LinearLayout
+            android:id="@+id/hud_text_connection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+            
+            <TextView
+                android:id="@+id/hud_text_connection_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:text="@string/hud_text_connection_label"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="11sp"
+                android:typeface="monospace" />
+            <TextView
+                android:id="@+id/hud_text_connection_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="0dp"
+                android:textColor="#000000"
+                android:textSize="11sp"
+                android:typeface="monospace" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/hud_text_bps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+            
+            <TextView
+                android:id="@+id/hud_text_bps_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:text="@string/hud_text_bps_label"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="11sp"
+                android:typeface="monospace" />
+            <TextView
+                android:id="@+id/hud_text_bps_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="0dp"
+                android:textColor="#000000"
+                android:textSize="11sp"
+                android:typeface="monospace" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>
