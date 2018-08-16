@@ -340,11 +340,11 @@ public class Car
 
             {
                 // Get instance of Vibrator from current Context
-                Vibrator v = (Vibrator) getActivity().getSystemService(
-                        Context.VIBRATOR_SERVICE
-                    );
+                //Vibrator v = (Vibrator) getActivity().getSystemService(
+                //        Context.VIBRATOR_SERVICE
+                //    );
                 // Vibrate for 30 milliseconds
-                v.vibrate(30);
+                //v.vibrate(30);
             }
 
             // Convert the roll value from the vehicle, so min, max is 
