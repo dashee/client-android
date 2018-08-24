@@ -88,10 +88,12 @@ public class SendCommands extends Thread
                 }
 
                 // Create a new set of bytes
-                byte[] ar = new byte[3];
+                byte[] ar = new byte[5];
                 ar[0] = 0;
-                ar[1] = (byte)vehicle.getRoll();
-                ar[2] = (byte)vehicle.getThrottle();
+                ar[1] = 0;
+                ar[2] = 0;
+                ar[3] = (byte)vehicle.getRoll();
+                ar[4] = (byte)vehicle.getThrottle();
 
                 // Send the commands to th server
                 this.sendCommandBytes(ar);
