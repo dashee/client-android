@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:summary="@string/pref_subtitle"
+    android:title="@string/pref_title" >
+    <PreferenceCategory android:title="@string/pref_server" >
+        <EditTextPreference
+            android:key="pref_server_ip"
+            android:summary="@string/ip"
+            android:title="@string/pref_server_ip" 
+            android:defaultValue="@string/ip"
+            />
+        <EditTextPreference
+            android:key="pref_server_port"
+            android:summary="@string/port"
+            android:title="@string/pref_server_port" 
+            android:defaultValue="@string/port"
+            />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_channel_title" >
+        <Preference
+            android:key="pref_roll"
+            android:title="@string/roll_title" 
+            android:summary="@string/roll_title_summary"
+            >
+            <intent android:action="dashee.action.ROLL"/>
+        </Preference>
+        <Preference
+            android:key="pref_power"
+            android:title="@string/throttle_title" 
+            android:summary="@string/throttle_summary"
+            >
+            <intent android:action="dashee.action.THROTTLE"/>
+        </Preference>
+    </PreferenceCategory>
+</PreferenceScreen>

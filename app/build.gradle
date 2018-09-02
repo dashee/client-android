@@ -1,0 +1,26 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "28.0.2"
+
+    defaultConfig {
+        applicationId "org.dashee.remote"
+        minSdkVersion 11
+        targetSdkVersion 19
+
+        testApplicationId "org.dashee.remote.tests"
+        testInstrumentationRunner "android.test.InstrumentationTestRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+}
+
+dependencies {
+    implementation 'com.android.support:support-v4:19.1.0'
+}

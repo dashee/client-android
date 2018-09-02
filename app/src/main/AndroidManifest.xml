@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest package="org.dashee.remote"
+    android:versionCode="1"
+    android:versionName="1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="19" />
+	<uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme"
+        >
+        <activity
+            android:name="org.dashee.remote.MainActivity"
+            android:label="@string/title_activity_main"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"  >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="org.dashee.remote.preference.PreferencesActivity"
+            android:label="@string/pref_title"
+            android:parentActivityName="org.dashee.remote.MainActivity">
+        </activity>
+        <activity
+            android:name="org.dashee.remote.preference.RollActivity"
+            android:label="@string/roll_title"
+            android:parentActivityName="org.dashee.remote.preference.PreferenceActivity">
+            <intent-filter>  
+                <action android:name="dashee.action.ROLL"/>  
+                <category android:name="android.intent.category.DEFAULT" />  
+            </intent-filter>  
+        </activity>
+        <activity
+            android:name="org.dashee.remote.preference.ThrottleActivity"
+            android:label="@string/throttle_title"
+            android:parentActivityName="org.dashee.remote.preference.PreferenceActivity">
+            <intent-filter>  
+                <action android:name="dashee.action.THROTTLE"/>  
+                <category android:name="android.intent.category.DEFAULT" />  
+            </intent-filter>  
+        </activity>
+    </application>
+</manifest>

@@ -1,0 +1,35 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:clipChildren="false"
+    android:background="#000000">
+    
+    <FrameLayout
+        android:id="@+id/fragment_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+     
+    <fragment
+        android:id="@+id/fragment_log"
+        android:name="org.dashee.remote.fragment.Log"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" 
+        />
+     
+    <fragment
+         android:id="@+id/fragment_hud"
+         android:name="org.dashee.remote.fragment.hud.Car"
+         android:layout_width="fill_parent"
+         android:layout_height="fill_parent" 
+         />
+     
+    <FrameLayout
+         android:id="@+id/preference_roll"
+         android:name="org.dashee.remote.preference.fragment.Roll"
+         android:layout_width="fill_parent"
+         android:layout_height="fill_parent" 
+         />
+</LinearLayout>

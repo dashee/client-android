@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Dashee</string>
+    <string name="title_activity_main">Dashee</string>
+
+    <string name="pref_title">Settings</string>
+    <string name="pref_subtitle">Configure your remote</string>
+    
+    <string name="ip">127.0.0.1</string>
+    <string name="port">2047</string>
+
+    <string name="pref_server">Server Settings</string>
+    <string name="pref_server_ip">Server\'s IP Address</string>
+    <string name="pref_server_port">Port</string>
+
+    <string name="pref_channel_title">Vehicle Settings</string>
+    <string name="pref_channel_default">Trim, Invert, Min and Max values</string>
+    <string name="pref_channel_subtitle">Configure channel specific settings</string>
+
+    <string name="pref_pitch_title">Pitch</string>
+    <string name="pref_pitch_summary">Change the finer details on pitch axis.</string>
+
+    <string name="pref_yaw_title">Yaw</string>
+    <string name="pref_yaw_summary">Change the finer details on yaw axis.</string>
+
+    <string name="pref_throttle_title">Throttle</string>
+    <string name="pref_throttle_summary">Change the finer details on throttle axis.</string>
+
+    <string name="fragment_log_textview">No Data</string>
+    
+    <string name="hud_connection">Failed</string>
+    <string name="hud_throttle_mid">50</string>
+    <string name="hud_throttle_kph">KPH</string>
+    <string name="hud_roll">ROLL</string>
+    <string name="hud_roll_mid">50</string>
+    <string name="hud_roll_min">0</string>
+    <string name="hud_roll_max">100</string>
+
+    <string name="roll_title">Roll/Steering</string>
+    <string name="roll_title_summary">Change the finer details on roll axis.</string>
+    <string name="roll_trim">Trim</string>
+    <string name="roll_trim_summary">Choose between -100 and 100.</string>
+    <string name="roll_trim_message">
+        Alway try to trim physically on the device, before resorting to fine tuning 
+        the digital trim.
+    </string>
+    <string name="roll_invert">Invert</string>
+    <string name="roll_invert_summary">
+        Enable to send inverted values to the server.
+    </string>
+    <string name="roll_vibrate">Vibrate on Lock</string>
+    <string name="roll_vibrate_summary">
+        Enable vibrations when the phone is in full lock.
+    </string>
+
+    <!-- THROTTLE -->
+    <string name="throttle_title">Throttle</string>
+    <string name="throttle_summary">Change the values of forward and reverse.</string>
+
+    <string name="throttle_trim">Trim</string>
+    <string name="throttle_trim_default">0</string>
+    <string name="throttle_trim_summary">Fine grain your throttle trim.</string>
+    <string name="throttle_trim_message">
+        Modifying your trim values causes you to lose range, if possible try physically trimming the throttle before changing it digitally.
+    </string>
+
+    <string name="throttle_max">Maximum Throttle</string>
+    <string name="throttle_max_default">0</string>
+    <string name="throttle_max_summary">Set the maximum value of throttle allowed.</string>
+    <string name="throttle_max_message">
+        Helps you control the maximum throttle values sent to the server
+    </string>
+
+    <string name="throttle_invert">Invert</string>
+    <string name="throttle_invert_summary">
+        Enable to send inverted values to the server.
+    </string>
+
+    <string name="throttle_pitch">Use phone pitch for throttle</string>
+    <string name="throttle_pitch_summary">
+        Enable to use pitch to change throttle.
+    </string>
+</resources>
