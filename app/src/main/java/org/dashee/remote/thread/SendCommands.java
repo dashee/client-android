@@ -2,6 +2,7 @@ package org.dashee.remote.thread;
 
 import java.net.*;
 
+import org.dashee.remote.fragment.Hud;
 import org.dashee.remote.model.Config;
 import org.dashee.remote.model.Vehicle;
 
@@ -46,6 +47,8 @@ public class SendCommands extends Thread
      */
     private Vehicle vehicle;
 
+    private Hud hud;
+
     /**
      * Initiate our thread. Set the variables from the parameters, and set our 
      * IP Address object. Also create a new instance of socket
@@ -53,13 +56,14 @@ public class SendCommands extends Thread
      * @param config Set our pointer to the config var
      * @param vehicle  Set our variable reference to the vehicle var
      */
-    public SendCommands(Config config, Vehicle vehicle)
+    public SendCommands(Config config, Vehicle vehicle, Hud hud)
     {
         super();
         try
         {
             this.vehicle = vehicle;
             this.config = config;
+            this.hud = hud;
             this.sockHandler = new DatagramSocket();
         }
         catch(Exception e)
@@ -156,6 +160,21 @@ public class SendCommands extends Thread
             );
 
             this.sockHandler.send(packet);
+
+            this.sockHandler.setSoTimeout(300);
+            try {
+                byte[] lMsg = new byte[1000];
+                DatagramPacket dp = new DatagramPacket(lMsg, lMsg.length);
+                this.sockHandler.receive(dp);
+                String stringData = new String(lMsg, 0, dp.getLength());
+                android.util.Log.i("dashee", "Received: " + stringData);
+                this.hud.setConnection(Hud.CONNECTION_STATUS.CONNECTED);
+            } catch (SocketTimeoutException e) {
+                // resend
+                android.util.Log.e("dashee", "Received Timeout");
+                this.hud.setConnection(Hud.CONNECTION_STATUS.FAIL);
+            }
+
         }
         catch (Exception e)
         {

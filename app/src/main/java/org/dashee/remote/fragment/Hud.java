@@ -16,7 +16,13 @@ public abstract class Hud
      * Instance which holds our vehicle.
      */
     protected org.dashee.remote.model.Vehicle vehicle;
-    
+
+
+    public enum CONNECTION_STATUS {
+        CONNECTED,
+        FAIL
+    };
+
     /**
      *
      * @param vehicle The vehicle value to initiate
@@ -58,9 +64,9 @@ public abstract class Hud
     /**
      * Set the Connection Status
      *
-     * @param connection - The Connection string
+     * @param status - The Connection status
      */
-    public abstract void setConnection(String connection);
+    public abstract void setConnection(CONNECTION_STATUS status);
 
     /**
      * Assign a reference of vehicle model to the hud

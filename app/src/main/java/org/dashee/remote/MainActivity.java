@@ -19,6 +19,7 @@ import java.util.Map;
 import org.dashee.remote.exception.InvalidValue;
 import org.dashee.remote.exception.OutOfRange;
 
+import org.dashee.remote.fragment.Hud;
 import org.dashee.remote.model.Config;
 import org.dashee.remote.model.Vehicle;
 import org.dashee.remote.model.vehicle.Car;
@@ -136,7 +137,8 @@ public class MainActivity
         // Initialise our thread
         threadSendCommand = new org.dashee.remote.thread.SendCommands(
                 this.config, 
-                this.vehicle
+                this.vehicle,
+                this.hud
             );
         threadSendCommand.start();
     }
@@ -199,6 +201,7 @@ public class MainActivity
 
             // Change the hud values for the IP Address
             this.hud.setIp(this.config.getIp().toString().substring(1));
+            this.hud.setConnection(Hud.CONNECTION_STATUS.FAIL);
         }
         catch (UnknownHostException e)
         {
