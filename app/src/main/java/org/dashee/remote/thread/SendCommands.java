@@ -2,6 +2,7 @@ package org.dashee.remote.thread;
 
 import java.net.*;
 
+import org.dashee.remote.fragment.Hud;
 import org.dashee.remote.model.Config;
 import org.dashee.remote.model.Vehicle;
 
@@ -46,6 +47,8 @@ public class SendCommands extends Thread
      */
     private Vehicle vehicle;
 
+    private Hud hud;
+
     /**
      * Initiate our thread. Set the variables from the parameters, and set our 
      * IP Address object. Also create a new instance of socket
@@ -53,14 +56,16 @@ public class SendCommands extends Thread
      * @param config Set our pointer to the config var
      * @param vehicle  Set our variable reference to the vehicle var
      */
-    public SendCommands(Config config, Vehicle vehicle)
+    public SendCommands(Config config, Vehicle vehicle, Hud hud)
     {
         super();
         try
         {
             this.vehicle = vehicle;
             this.config = config;
+            this.hud = hud;
             this.sockHandler = new DatagramSocket();
+            this.sockHandler.setSoTimeout(500);
         }
         catch(Exception e)
         {
@@ -97,6 +102,7 @@ public class SendCommands extends Thread
 
                 // Send the commands to th server
                 this.sendCommandBytes(ar);
+                //this.sendPing();
 
                 synchronized (lockPause)
                 {
@@ -136,6 +142,43 @@ public class SendCommands extends Thread
         
         this.resetTime = System.currentTimeMillis();
         return true;
+    }
+
+    /**
+     * Send a ping to the server and wait for a response.
+     */
+    private void sendPing(){
+        try
+        {
+            byte[] ar = new byte[1];
+            ar[0] = 1;
+            DatagramPacket packet = new DatagramPacket(
+                    ar,
+                    ar.length,
+                    this.config.getIp(),
+                    this.config.getPort()
+            );
+
+            this.sockHandler.send(packet);
+
+            try {
+                byte[] lMsg = new byte[1000];
+                DatagramPacket dp = new DatagramPacket(lMsg, lMsg.length);
+                this.sockHandler.receive(dp);
+                String stringData = new String(lMsg, 0, dp.getLength());
+                android.util.Log.i("dashee", "Received: " + stringData);
+                this.hud.setConnection(Hud.CONNECTION_STATUS.CONNECTED);
+            } catch (SocketTimeoutException e) {
+                // resend
+                android.util.Log.e("dashee", "Received Timeout");
+                this.hud.setConnection(Hud.CONNECTION_STATUS.FAIL);
+            }
+
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
     
     /**

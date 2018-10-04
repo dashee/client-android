@@ -83,6 +83,9 @@ public class Car
      */
     private PhoneSensors phoneSensors;
 
+    private int colorRed = Color.parseColor("#A60000");
+    private int colorGreen = Color.parseColor("#00A600");
+
     /**
      * Constructor. Required by Fragment type Objects,
      * and they have to be public
@@ -284,14 +287,22 @@ public class Car
     /**
      * Set our textbox connection value
      *
-     * @param value the value to update
+     * @param status the value to update
      */
-    public void setConnection(String value)
+    public void setConnection(CONNECTION_STATUS status)
     {
         if (this.tvStatus == null)
             return;
 
-        this.tvStatus.setText(value);
+        switch (status){
+            case CONNECTED:
+                this.tvStatus.setTextColor(this.colorGreen);
+                this.tvStatus.setText("Connected");
+                break;
+            default:
+                this.tvStatus.setTextColor(this.colorRed);
+                this.tvStatus.setText("Failed");
+        }
     }
     
     /**
