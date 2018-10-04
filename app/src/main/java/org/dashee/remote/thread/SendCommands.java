@@ -65,6 +65,7 @@ public class SendCommands extends Thread
             this.config = config;
             this.hud = hud;
             this.sockHandler = new DatagramSocket();
+            this.sockHandler.setSoTimeout(500);
         }
         catch(Exception e)
         {
@@ -101,6 +102,7 @@ public class SendCommands extends Thread
 
                 // Send the commands to th server
                 this.sendCommandBytes(ar);
+                //this.sendPing();
 
                 synchronized (lockPause)
                 {
@@ -141,6 +143,43 @@ public class SendCommands extends Thread
         this.resetTime = System.currentTimeMillis();
         return true;
     }
+
+    /**
+     * Send a ping to the server and wait for a response.
+     */
+    private void sendPing(){
+        try
+        {
+            byte[] ar = new byte[1];
+            ar[0] = 1;
+            DatagramPacket packet = new DatagramPacket(
+                    ar,
+                    ar.length,
+                    this.config.getIp(),
+                    this.config.getPort()
+            );
+
+            this.sockHandler.send(packet);
+
+            try {
+                byte[] lMsg = new byte[1000];
+                DatagramPacket dp = new DatagramPacket(lMsg, lMsg.length);
+                this.sockHandler.receive(dp);
+                String stringData = new String(lMsg, 0, dp.getLength());
+                android.util.Log.i("dashee", "Received: " + stringData);
+                this.hud.setConnection(Hud.CONNECTION_STATUS.CONNECTED);
+            } catch (SocketTimeoutException e) {
+                // resend
+                android.util.Log.e("dashee", "Received Timeout");
+                this.hud.setConnection(Hud.CONNECTION_STATUS.FAIL);
+            }
+
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
     
     /**
      * Send the bytes to the server. Each packet is sent after Nth milisecond 
@@ -160,21 +199,6 @@ public class SendCommands extends Thread
             );
 
             this.sockHandler.send(packet);
-
-            this.sockHandler.setSoTimeout(300);
-            try {
-                byte[] lMsg = new byte[1000];
-                DatagramPacket dp = new DatagramPacket(lMsg, lMsg.length);
-                this.sockHandler.receive(dp);
-                String stringData = new String(lMsg, 0, dp.getLength());
-                android.util.Log.i("dashee", "Received: " + stringData);
-                this.hud.setConnection(Hud.CONNECTION_STATUS.CONNECTED);
-            } catch (SocketTimeoutException e) {
-                // resend
-                android.util.Log.e("dashee", "Received Timeout");
-                this.hud.setConnection(Hud.CONNECTION_STATUS.FAIL);
-            }
-
         }
         catch (Exception e)
         {
