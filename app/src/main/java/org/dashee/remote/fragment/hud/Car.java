@@ -27,7 +27,9 @@ import android.text.Html;
 import java.util.Observable;
 import java.util.Observer;
 
+import android.widget.MediaController;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import org.dashee.remote.exception.OutOfRange;
 import org.dashee.remote.DrawHud;
@@ -114,6 +116,14 @@ public class Car
         this.initOptionsButtonListener();
         this.initTextViews();
 
+        VideoView raspivid = (VideoView)view.findViewById(R.id.raspivid);
+
+        raspivid.setVideoURI(Uri.parse("http://"+this.tvIp.getText()+":2222"));
+        MediaController mediaController = new MediaController(this.getActivity());
+        mediaController.hide();
+        raspivid.setMediaController(mediaController);
+        raspivid.requestFocus();
+        raspivid.start();
 
         return view;
     }
